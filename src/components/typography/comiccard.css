@@ -1,0 +1,15 @@
+.card {
+  background-image: linear-gradient(to top, #5ee7df 0%, #b490ca 100%);
+  border: 2px solid lightblue;
+  display: grid;
+  text-align: center;
+  border-radius: 25px;
+}
+
+.card__image {
+  border-radius: 25px;
+  width: 300px;
+  height: 300px;
+
+  object-fit: cover;
+}
