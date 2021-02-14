@@ -6,7 +6,7 @@ export function createCard({ name, image, publisher, birth }) {
     childs: [
       createElement("img", {
         className: "card__image",
-        src: image.medium_url,
+        src: image.screen_url,
       }),
       createElement("h2", {
         className: "info__name",
@@ -19,7 +19,7 @@ export function createCard({ name, image, publisher, birth }) {
       }),
       createElement("p", {
         className: "info__publisher",
-        innerText: publisher.name,
+        innerText: publisher ? publisher.name : "not known",
       }),
     ],
   });

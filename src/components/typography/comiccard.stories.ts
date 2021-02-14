@@ -1,7 +1,7 @@
 import "./comiccard.css";
 import { createCard } from "./comiccard";
 import { createElement } from "../../utils/createElement";
-import { getHero, APICharacter } from "../../utils/api";
+import { getHero, APICharacter, getCharacters } from "../../utils/api";
 
 export default {
   title: "Comics/Characters",
@@ -11,7 +11,7 @@ export default {
 export const SheHulk = () =>
   createCard({
     image: {
-      medium_url: `https://comicvine1.cbsistatic.com/uploads/scale_medium/12/124259/6984082-she-hulk.jpg`,
+      screen_url: `https://comicvine1.cbsistatic.com/uploads/scale_medium/12/124259/6984082-she-hulk.jpg`,
     },
     name: "She-Hulk",
     publisher: { name: "Marvel" },
@@ -27,3 +27,27 @@ CharacterFromAPI.loaders = [
     character: await getHero(1499),
   }),
 ];
+
+export const CharactersFromAPIWithFilter = (args) => {
+  const input = createElement("input", {
+    placeholder: "Name",
+    onchange: async () => {
+      const newCharacters = await getCharacters(input.value);
+      console.log(newCharacters);
+      const newCards = newCharacters.map((character) => createCard(character));
+      characterContainer.innerHTML = "";
+      characterContainer.append(...newCards);
+    },
+  });
+
+  const characterContainer = createElement("div", {
+    className: "container",
+  });
+
+  const container = createElement("div", {
+    className: "",
+    childs: [input, characterContainer],
+  });
+
+  return container;
+};
