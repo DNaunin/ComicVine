@@ -11,11 +11,11 @@ export default {
 export const SheHulk = () =>
   createCard({
     image: {
-      screen_url: `https://comicvine1.cbsistatic.com/uploads/scale_medium/12/124259/6984082-she-hulk.jpg`,
+      small_url: `https://comicvine1.cbsistatic.com/uploads/scale_small/12/124259/6984082-she-hulk.jpg`,
     },
     name: "She-Hulk",
     publisher: { name: "Marvel" },
-    birth: "Jun 16, 1980",
+    real_name: "Jennifer Walters",
   });
 
 export const CharacterFromAPI = (args, { loaded: { character } }) => {

@@ -1,12 +1,12 @@
 import { createElement } from "../../utils/createElement";
 
-export function createCard({ name, image, publisher, birth }) {
+export function createCard({ name, image, publisher, real_name }) {
   return createElement("article", {
     className: "card",
     childs: [
       createElement("img", {
         className: "card__image",
-        src: image.screen_url,
+        src: image.small_url,
       }),
       createElement("h2", {
         className: "info__name",
@@ -14,8 +14,8 @@ export function createCard({ name, image, publisher, birth }) {
       }),
 
       createElement("p", {
-        className: "info__birth",
-        innerText: birth,
+        className: "info__rname",
+        innerText: real_name,
       }),
       createElement("p", {
         className: "info__publisher",

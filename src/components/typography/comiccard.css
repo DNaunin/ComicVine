@@ -1,15 +1,35 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .card {
+  margin: 15px;
+  padding: 10px;
   background-image: linear-gradient(to top, #5ee7df 0%, #b490ca 100%);
   border: 2px solid lightblue;
-  display: grid;
   text-align: center;
   border-radius: 25px;
+  color: white;
 }
 
 .card__image {
   border-radius: 25px;
-  width: 300px;
-  height: 300px;
-
+  width: 15rem;
   object-fit: cover;
+}
+
+.info__name {
+  font-weight: 700;
+}
+
+.info__rname {
+  padding-left: 20px;
+  text-align: left;
+}
+
+.info__publisher {
+  text-align: left;
+  padding-left: 20px;
+  font-weight: bold;
 }

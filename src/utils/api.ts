@@ -1,7 +1,6 @@
 import comiccardStories from "../components/typography/comiccard.stories";
 
 export type APICharacter = {
-  birth: string;
   gender: 1 | 2 | 3;
   image: {
     icon_url: string;
@@ -21,6 +20,7 @@ export type APICharacter = {
     id: string;
     name: string;
   };
+  real_name: string;
 };
 
 export type APICharacters = {
@@ -35,7 +35,7 @@ export type APICharacters = {
 
 export async function getHero(id: number) {
   const response = await fetch(
-    `https://cors-anywhere.herokuapp.com/https://comicvine.gamespot.com/api/characters/?api_key=3ddd177d9376a5571e28309e6dc67408e1ed0854&format=json&filter=id:${id}&field_list=birth,gender,name,image,publisher`,
+    `https://cors-anywhere.herokuapp.com/https://comicvine.gamespot.com/api/characters/?api_key=3ddd177d9376a5571e28309e6dc67408e1ed0854&format=json&filter=id:${id}&field_list=real_name,gender,name,image,publisher`,
     {
       headers: { origin: "localhost" },
     }
@@ -47,11 +47,11 @@ export async function getHero(id: number) {
     console.log("empty");
     return {
       image: {
-        screen_url:
+        small_url:
           "https://images.unsplash.com/photo-1531257243018-c547a2e35767?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=782&q=80",
       },
       name: "Character not found",
-      birth: "not born",
+      real_name: "not existent",
       publisher: { name: "not published" },
     };
   }
@@ -62,7 +62,7 @@ export async function getCharacters(name?: string) {
   const response = await fetch(
     `https://cors-anywhere.herokuapp.com/https://comicvine.gamespot.com/api/characters/?api_key=3ddd177d9376a5571e28309e6dc67408e1ed0854&format=json&filter=publisher:marvel${
       name ? `,name:${name}` : ""
-    }&field_list=birth,gender,name,image,publisher`
+    }&field_list=real_name,gender,name,image,publisher`
   );
   if (!response.ok) {
     return [];
