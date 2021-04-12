@@ -1,5 +1,3 @@
-import comiccardStories from "../components/typography/comiccard.stories";
-
 export type APICharacter = {
   gender: 1 | 2 | 3;
   image: {
@@ -40,7 +38,9 @@ export async function getHero(id: number) {
       headers: { origin: "localhost" },
     }
   );
-
+  if (!response.ok) {
+    throw new Error("api not working");
+  }
   const result = (await response.json()) as APICharacters;
   console.log(result.results);
   if (result.results.length == 0) {

@@ -1,7 +1,7 @@
 import "./comiccard.css";
 import { createCard } from "./comiccard";
 import { createElement } from "../../utils/createElement";
-import { getHero, APICharacter, getCharacters } from "../../utils/api";
+import { getHero, getCharacters } from "../../utils/api";
 
 export default {
   title: "Comics/Characters",
@@ -29,7 +29,12 @@ CharacterFromAPI.loaders = [
 ];
 
 export const CharactersFromAPIWithFilter = (args) => {
+  const headline = createElement("h2", {
+    className: "headline",
+    innerText: "What is your favourite Hero's name?",
+  });
   const input = createElement("input", {
+    className: "inputField",
     placeholder: "Name",
     onchange: async () => {
       const newCharacters = await getCharacters(input.value);
@@ -46,7 +51,7 @@ export const CharactersFromAPIWithFilter = (args) => {
 
   const container = createElement("div", {
     className: "",
-    childs: [input, characterContainer],
+    childs: [headline, input, characterContainer],
   });
 
   return container;
